@@ -1,0 +1,9 @@
+# Description:
+
+## Project- IAAS
+
+The project involved setting up an AWS environment for a web application, starting with the creation of an EC2 instance to serve as the web tier. This server continuously listened for incoming HTTP requests on port 8000, processing user images by directing them to an App Tier for classification using a machine learning model. Communication between the Web and App Tiers was managed via SQS queues, with the Web Tier handling concurrency and auto-scaling. The Web Tier deployed 20 App Tier instances based on a custom auto-scaling algorithm to manage varying request volumes. After classification, input images were stored in an S3 input bucket, and results were saved in an output bucket for easy access and data persistence. The system was tested with 200 images, completing the classification process in 1.2 minutes and accurately identifying all images.
+
+## Project- FAAS
+
+The project involved developing an advanced cloud application for face recognition in client videos using AWS Lambda. It began with implementing a video-splitting function, where client-uploaded videos in an Input bucket triggered a Lambda function to split them into frames stored in a Stage-1 bucket. Docker was employed to integrate files into Lambda, ensuring smooth deployment and efficient video data processing. A multi-stage pipeline was then constructed with four Lambda functions, including frame extraction using FFmpeg and face recognition using an SSD algorithm and a pre-trained CNN model, encapsulated in a Docker container. Recognized faces were cataloged in text files within the output bucket. CloudWatch monitored operations, providing valuable insights. The system successfully classified 1000 video clips within 3 minutes, demonstrating the effective integration of Lambda, Docker, and machine learning for video analysis.
